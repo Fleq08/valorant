@@ -1,0 +1,717 @@
+
+:root{
+  --bg: #0b0f1a;            
+  --surface: #0f1629;      
+  --card: #151e34;           
+  --border: rgba(255,255,255,0.06);
+  --text: #ffffff;
+  --muted: #94a3b8;
+  --primary: #ff4655;         
+  --primary-700: #e33a48;
+  --accent: #00e5ff;          
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 16px;
+}
+
+
+*{ box-sizing: border-box; }
+html,body{ height: 100%; }
+body{
+  margin: 0;
+  font-family: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #16203a 0%, rgba(22,32,58,0) 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(255,70,85,.12) 0%, rgba(255,70,85,0) 60%),
+    linear-gradient(180deg, #0a0e18 0%, #0b0f1a 100%);
+  line-height: 1.6;
+}
+
+.container{
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+/* Bakgrundsfärg på headern */
+header{
+  background: #111827;           /* byt till valfri färg/gradient */
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Rubrik- och länkfärg */
+header h1{ color: #ffffff; }      /* textfärg på rubriken */
+header nav a{ color: #94a3b8; }   /* länkfärg */
+header nav a:hover{ color: #ffffff; background: rgba(255,255,255,.06); }
+
+
+
+header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(13,16,28,.8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+header .container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 18px;
+}
+
+header h1{
+  margin: 0;
+  font-size: clamp(18px, 2vw, 22px);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+nav{
+  display: flex;
+  gap: 18px;
+}
+nav a{
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: color .2s ease, background .2s ease, transform .15s ease;
+}
+nav a:hover{
+  color: var(--text);
+  background: rgba(255,255,255,.05);
+  transform: translateY(-1px);
+}
+
+
+.hero{
+  position: relative;
+  padding: 80px 0 56px;
+  background:
+    linear-gradient(180deg, rgba(255,70,85,.08), rgba(255,70,85,0) 60%),
+    linear-gradient(180deg, rgba(0,229,255,.06), rgba(0,229,255,0) 70%);
+  border-bottom: 1px solid var(--border);
+}
+.hero h2{
+  margin: 0 0 10px;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.15;
+}
+.hero p{
+  margin: 0 0 22px;
+  color: var(--muted);
+  max-width: 680px;
+}
+.btn{
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), var(--primary-700));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+
+section{
+  padding: 36px 0;
+}
+section h2{
+  margin: 0 0 18px;
+  font-size: clamp(22px, 3vw, 28px);
+  letter-spacing: .4px;
+}
+
+
+.matches{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.match-card, .stat-card{
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.match-card:hover, .stat-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(126, 5, 5, 0.562);
+  border-color: rgba(204, 23, 38, 0.637);
+}
+.match-card h3{
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+.match-card p{
+  margin: 0;
+  color: var(--muted);
+}
+
+.upcoming .match-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.upcoming .match-list li{
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255,255,255,.03);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.upcoming .match-list li::before{
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 4px rgba(255,70,85,.12);
+}
+
+.stats-overview .container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.stats-overview h2{
+  grid-column: 1 / -1;
+  margin-bottom: 6px;
+}
+.stat-card h3{
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+.stat-card p{
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+
+.news, .upcoming, .stats-overview{
+  position: relative;
+}
+.news::before, .upcoming::before, .stats-overview::before{
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+  transform: translateY(-18px);
+}
+
+
+footer{
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+  background: rgba(13,16,28,.7);
+}
+footer p{
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+  padding: 20px 0;
+}
+
+
+h1, h2, h3{ text-shadow: 0 2px 8px rgba(0,0,0,.35); }
+a{ transition: opacity .2s ease; }
+a:active{ opacity: .9; }
+
+
+@media (max-width: 992px){
+  .matches{ grid-template-columns: repeat(2, 1fr); }
+  .stats-overview .container{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  header .container{ flex-direction: column; gap: 10px; }
+  .hero{ padding: 56px 0 36px; }
+  .matches{ grid-template-columns: 1fr; }
+  .stats-overview .container{ grid-template-columns: 1fr; }
+  nav{ flex-wrap: wrap; gap: 10px; justify-content: center; }
+}
+
+
+.hero { 
+  padding: 80px 0 56px; 
+ 
+}
+
+.hero-inner{
+  display: flex;
+  align-items: center;
+  gap: 38px;                 /* mellanrum mellan logga och text */
+}
+
+.hero-logo{
+  width: clamp(160px, 30vw, 270px);
+  height: auto;
+  object-fit: contain;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,.35));
+}
+
+.hero-content{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero h2{
+  margin: 0;
+  line-height: 1.15;
+}
+
+.hero p{
+  margin: 0 0 8px;
+  max-width: 680px;
+  opacity: .9;
+}
+
+
+.fade-in{
+  opacity: 0;
+  animation: fadeInUp .6s ease-out forwards;
+}
+@keyframes fadeInUp{
+  from{ opacity: 0; transform: translateY(8px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivt: stapla loggan över text på mobil */
+@media (max-width: 640px){
+  .hero-inner{
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-content{ align-items: center; }
+  .hero-logo{ width: clamp(130px, 30vw, 170px); }
+}
+
+/* Lag.html sidan */ 
+
+
+
+
+:root{
+  --team-logo-size: 140px;  
+  --card-pad: 10px;         
+
+
+.match-card1{
+  display: grid;
+  place-items: center;
+  padding: var(--card-pad);
+  width: calc(var(--team-logo-size) + (var(--card-pad) * 2) + 2px);
+  height: calc(var(--team-logo-size) + (var(--card-pad) * 2) + 2px);
+
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+  
+}
+
+.match-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(97, 4, 4, 0.575);
+  border-color: rgba(216, 15, 31, 0.671);
+}
+
+
+.team-logo{
+  width: var(--team-logo-size);
+  height: var(--team-logo-size);
+  object-fit: contain;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
+  border-radius: 14px;    /* 50% om du vill ha rund */
+  /* ta bort: padding: 12px; */
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,.35));
+}
+
+
+@media (max-width: 640px){
+  .matches--grid{ gap: 14px; }
+  :root{
+    --team-logo-size: 120px; 
+    --card-pad: 8px;
+  }
+}
+
+
+.matches--grid{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;             
+  justify-content: flex-start;
+}
+
+
+:root{
+  --team-logo-size: 140px; 
+  --card-pad: 8px;         /* storleken på loggan */
+}
+
+.match-card1{
+  display: grid;
+  place-items: center;
+  padding: var(--card-pad);
+  width: calc(var(--team-logo-size) + (var(--card-pad) * 2) + 2px);
+  height: calc(var(--team-logo-size) + (var(--card-pad) * 2) + 2px);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+/* Bild UTAN bakgrund – bara själva loggan visas */
+.team-logo{
+  width: var(--team-logo-size);
+  height: var(--team-logo-size);
+  object-fit: contain;
+  display: block;
+
+  /* ta bort “bakgrund i bilden” */
+  background: none;      
+  border: 0;             
+  border-radius: 0;      
+  padding: 0;             
+  filter: none;           
+}
+
+
+.news .container1 h2{ margin-bottom: 10px; }
+}
+
+
+
+/* Gör hela kortet klickbart via en osynlig länk */
+.match-card1{
+  position: relative;             /* så att länken kan positioneras på kortet */
+}
+
+.match-card1 .card-link{
+  position: absolute;
+  inset: 0;                       /* fyll hela kortet */
+  display: block;
+  border-radius: 10px;            /* matcha kortets hörn om du använder radius */
+  text-indent: -9999px;           /* visuellt osynlig, men finns för skärmläsare */
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Tillgänglig fokus-stil när man tabb-navigerar */
+.match-card1 .card-link:focus-visible{
+  outline: 2px solid rgba(255,70,85,.7);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* Valfritt: liten hover-effekt när kortet är klickbart */
+.match-card1:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.35);
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+
+.match-card1:hover{
+  box-shadow:
+    0 16px 40px rgba(0,0,0,.45),
+    0 0 36px rgba(214, 27, 42, 0.849);
+  border-color: rgba(202, 16, 31, 0.651);
+}
+
+
+/* Afk i sängen sidan */ 
+
+
+
+
+
+
+/* ====== Design tokens, matchar din mörka stil ====== */
+:root{
+  --bg: #0b0f1a;
+  --surface: #0f1629;
+  --text: #e6e9f3;
+  --muted: #94a3b8;
+  --border: rgba(255,255,255,0.08);
+  --primary: #ff4655;
+  --shadow: 0 12px 30px rgba(0,0,0,.45);
+  --radius: 16px;
+}
+
+*{ box-sizing: border-box; }
+html,body{ height: 100%; }
+body{
+  margin: 0;
+  font-family: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #16203a 0%, rgba(22,32,58,0) 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(255,70,85,.12) 0%, rgba(255,70,85,0) 60%),
+    linear-gradient(180deg, #0a0e18 0%, #0b0f1a 100%);
+  line-height: 1.6;
+}
+
+.container{
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+/* ====== Header ====== */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(13,16,28,.75);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.site-header .container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 16px;
+}
+.site-header h1{
+  margin: 0;
+  font-size: clamp(18px, 2vw, 22px);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+nav{ display: flex; gap: 18px; }
+nav a{
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+nav a:hover{ color: var(--text); background: rgba(255,255,255,.06); }
+
+/* ====== Intro ====== */
+.intro p{ color: var(--muted); margin: 6px 0 0; }
+
+/* ====== Galleri-grid ====== */
+.grid{
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px; /* avstånd mellan korten */
+}
+
+.grid li {
+  box-shadow: var(--shadow);
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Kortet som håller bilden */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;                 /* så att pop-effekten klipps i hörnen */
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  transition: box-shadow .25s ease, transform .18s ease;
+  will-change: transform;
+}
+
+/* Bild + caption container */
+.thumb{
+  position: relative;
+  margin: 0;
+  aspect-ratio: 1 / 1;              /* kvadratiska rutor */
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* Själva bilden */
+.thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                 /* fyll rutan snyggt */
+  transform: scale(1);               /* utgångsläge */
+  transition: transform .28s ease, filter .28s ease;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Caption (valfri) */
+.thumb figcaption{
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.12);
+  color: #fff;
+  font-size: 12px;
+}
+
+/* ====== “Pop up” på hover/focus ====== */
+.card:hover{ 
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.card:hover .thumb img,
+.card:focus-within .thumb img{
+  transform: scale(1.08);           /* POP! öka till 1.08–1.12 om du vill ha mer */
+  filter: saturate(1.05);
+}
+
+/* Tangentbordsfokus (tillgängligt) */
+.card:focus-within{
+  outline: 2px solid rgba(255,70,85,.6);
+  outline-offset: 3px;
+}
+
+/* ====== Responsivitet ====== */
+@media (max-width: 992px){
+  .grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .grid{ grid-template-columns: 1fr; }
+  .thumb{ aspect-ratio: 4 / 3; }    /* lite mer rektangulärt på mobil */
+}
+
+/* --- Dölj bilden tills hover/fokus, men behåll pop-effekten --- */
+.thumb img{
+  opacity: 0;
+  transform: scale(0.92);
+  filter: blur(6px) brightness(0.7);
+  transition: opacity .28s ease, transform .28s ease, filter .28s ease;
+  will-change: opacity, transform, filter;
+}
+
+.card:hover .thumb img,
+.card:focus-within .thumb img{
+  opacity: 1;
+  transform: scale(1.08);   /* matchar din befintliga pop */
+  filter: none;
+}
+
+/* Mindre rörelse om användaren föredrar det (valfritt) */
+@media (prefers-reduced-motion: reduce){
+  .thumb img{
+    transition: opacity .25s linear;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* --- Slide-up från botten + pop --- */
+.thumb{
+  overflow: hidden; /* ser till att bilden klipps i nederkanten under animering */
+}
+
+.thumb img{
+  /* startläge: nedanför + lite mindre + dold */
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  filter: blur(6px) brightness(0.8);
+  transition:
+    opacity .28s ease,
+    transform .34s cubic-bezier(.2,.8,.2,1),
+    filter .28s ease;
+  will-change: opacity, transform, filter;
+}
+
+/* vid hover/fokus: glid upp och “poppa” lite */
+.card:hover .thumb img,
+.card:focus-within .thumb img{
+  opacity: 1;
+  transform: translateY(0) scale(1.06); /* ta bort scale(...) om du inte vill ha pop-effekten */
+  filter: none;
+}
+
+/* valfritt: lite extra skugga på kortet när man hovrar */
+.card:hover{
+  transform: translateY(-4px);
+}
+
+/* respekt för användare som vill minska rörelse */
+@media (prefers-reduced-motion: reduce){
+  .thumb img{
+    transition: opacity .25s linear;
+    transform: translateY(0);
+    filter: none;
+  }
+}
+
+/* Långsammare slide-up */
+.thumb img{
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  filter: blur(6px) brightness(0.8);
+  transition:
+    opacity .6s ease,                     /* var .28s */
+    transform .9s cubic-bezier(.2,.8,.2,1),/* var .34s */
+    filter .6s ease;                       /* var .28s */
+}
+
+/* Målläge vid hover/fokus (samma som innan) */
+.card:hover .thumb img,
+.card:focus-within .thumb img{
+  opacity: 1;
+  transform: translateY(0) scale(1.06); /* ta bort scale om du inte vill ha “pop” */
+  filter: none;
+}
+
+  /* ===== Röd box-shadow (glow) på korten ===== */
+
+/* normal-läge: diskret röd glöd + befintlig skugga */
+.card{
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.35),       /* din mörka standardskugga */
+    0 0 22px rgba(255,70,85,.22);     /* röd glöd */
+  border-color: rgba(255,70,85,.20);  /* svag röd kant (valfritt) */
+}
+
+/* hover/fokus: starkare glöd */
+.card:hover,
+.card:focus-within{
+  box-shadow:
+    0 16px 40px rgba(0,0,0,.45),      /* djupare standardskugga */
+    0 0 38px rgba(255, 5, 26, 0.651),     /* starkare röd glöd */
+    0 0 8px rgba(138, 3, 3, 0.664) inset;/* liten inre röd glöd (valfritt) */
+  border-color: rgba(197, 18, 33, 0.678);
+}
